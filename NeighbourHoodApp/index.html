@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neighbor Connect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Neighbor Connect</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search...">
+                <button id="search" onclick="searchFunction()">🔍</button>
+            </div>
+            <nav>
+                <ul>
+                    <button id="loginBtn" class="btn btn-primary">Login/SignUp</button>
+                    <button id="volunteerBtn" class="btn btn-success">Become a Volunteer</button>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Urgent Help Button -->
+    <section class="urgent-help">
+        <div class="container text-center">
+            <button class="btn btn-danger" id="urgentHelpBtn">🚨 Urgent Help</button>
+            <button id="helpBtn" class="btn btn-danger">Request Help For Groceries</button>
+            <button class="btn btn-warning request-help-btn">Request Help For Medicine</button>
+            <button class="btn btn-warning request-help-btn">Request Help For Furniture</button>
+        </div>
+        <!-- Login Modal -->
+<div id="loginModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="password" class="form-control mt-2" placeholder="Password">
+                    <button class="btn btn-primary mt-3">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Volunteer Modal -->
+<div id="volunteerModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Become a Volunteer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" class="form-control" placeholder="Full Name">
+                    <input type="email" class="form-control mt-2" placeholder="Email">
+                    <button class="btn btn-success mt-3">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div id="helpModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <textarea class="form-control" placeholder="Describe your request"></textarea>
+                    <button class="btn btn-danger mt-3">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>Help Request</h2>
+            <p id="popupMessage">Requesting help...</p>
+            <button class="btn btn-primary close-btn" id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Helping Neighbors, One Task at a Time</h2>
+            <p>Empower your community by offering or receiving help with everyday tasks.</p>
+            <div class="cta-buttons">
+                <button class="cta-btn request-help-btn">Request Help</button>
+                <button class="cta-btn request-help-btn">Become a Volunteer</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="shops.jpg">
+        </div>
+    </section>
+
+
+    <!-- Volunteer Reward System -->
+    <section class="volunteer-rewards text-center">
+        <div class="container">
+            <h2>🎖 Earn Rewards as a Volunteer</h2>
+            <p>Help your community and earn tokens redeemable for discounts or charity donations.</p>
+        </div>
+    </section>
+
+    <!-- Group Tasking Section -->
+    <section class="group-tasking">
+        <div class="container">
+            <h2>🤝 Collaborative Help</h2>
+            <p>Multiple volunteers can work together on a single request, ensuring faster and more effective support.</p>
+        </div>
+    </section>
+
+    <!-- Featured Tasks Section -->
+    <section class="featured-tasks">
+        <div class="container">
+            <h2>Featured Tasks</h2>
+            <div class="tasks-list">
+                <div class="task-card">
+                    <h4>Grocery Shopping</h4>
+                    <p>Need help with picking up groceries from the local market.</p>
+                    <img src="cart.jpeg" alt="Shopping Cart Illustration">
+                    <button class="cta-btn request-help-btn" onclick="window.location.href=''">Groceries</button>
+                </div>
+                <div class="task-card">
+                    <h4>Prescription Pick-Up</h4>
+                    <p>Pick up prescriptions from the pharmacy for Mrs. Smith.</p>
+                    <img src="med.jpeg" alt="Medicine Illustration">
+                    <button class="cta-btn request-help-btn" onclick="window.location.href=''">Medicines</button>
+                </div>
+                <div class="task-card">
+                    <h4>Furniture Moving</h4>
+                    <p>Help move some furniture for an elderly neighbor.</p>
+                    <img src="Room.jpeg" style="width: 350px; height: 250px;" alt="Furniture Moving Illustration">
+                    <button id="helpBtn" class="cta-btn request-help-btn" onclick="window.location.href=''">Furniture</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>NeighborAid is a website designed to connect community members who need help with daily tasks, such as grocery shopping, prescription pickups, and errands, with volunteers willing to assist. The website fosters local engagement by providing a simple platform for neighbors to support each other, ensuring that elderly individuals and those with mobility issues receive the help they need. By leveraging technology, NeighborAid enhances convenience, strengthens community bonds, and promotes a culture of kindness and mutual aid.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="socials">
+                <a href="#">Facebook</a> | 
+                <a href="#">Twitter</a> | 
+                <a href="https://www.instagram.com/neighbors_connect?igsh=bzBhajFzOWYzeGJj" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('urgentHelpBtn').addEventListener('click', function() {
+            alert('Emergency assistance requested! Volunteers have been notified.');
+        });
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <div class="help-icon" onclick="toggleChatbot()">
+        ?
+    </div>
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-header">
+            Chatbot
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <!-- Messages will appear here -->
+        </div>
+        <input type="text" id="chatbot-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</body>
+</html>
